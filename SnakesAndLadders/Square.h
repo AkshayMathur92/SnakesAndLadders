@@ -1,7 +1,7 @@
 #pragma once
 class Square
 {
-	int value;
+	int _value;
 
 public:
 	Square(int value);
