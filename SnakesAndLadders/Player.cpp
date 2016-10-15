@@ -29,7 +29,7 @@ void Player::rollDice(Dice dice)
 
 const int Player::getId()
 {
-	return 0;
+	return _id;
 }
 
 std::vector<int> Player::getMoves()
@@ -39,7 +39,7 @@ std::vector<int> Player::getMoves()
 
 Dice Player::getDice()
 {
-	if (_pDice)
+	if (!_pDice)
 		throw std::exception("Player does not have any dice.");
 	return *_pDice;
 }

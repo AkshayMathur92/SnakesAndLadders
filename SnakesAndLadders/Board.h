@@ -13,7 +13,7 @@ class Board
 	std::vector<Snake> _snakes;
 	
 public:
-	Board(int, std::vector<Ladder>&, std::vector<Snake>&);
+	Board(int, std::vector<Ladder>, std::vector<Snake>);
 	~Board();
 
 	const std::vector<Ladder> getLadders() const;

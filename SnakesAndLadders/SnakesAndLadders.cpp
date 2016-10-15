@@ -2,10 +2,10 @@
 //
 
 #include "stdafx.h"
-
-
+#include "SnakesAndLadder.h"
 int main()
 {
+	SnakesAndLadder().initGame();
     return 0;
 }
 

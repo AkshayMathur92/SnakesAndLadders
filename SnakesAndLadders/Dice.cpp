@@ -10,7 +10,7 @@ Dice::Dice(int timesRollable, int sided)
 	_timesRollable = timesRollable;
 	_sided = sided;
 	_id = rand();
-	_rolled = 0;
+	_rolled = 1;
 	_rollHistory.reserve(timesRollable);
 }
 
@@ -26,6 +26,8 @@ const int Dice::roll()
 		throw std::logic_error("Dice cannot be rolled anymore");
 	_rolled++;
 	auto value = rand() % _sided + 1;
+	if (value != 6)
+		_rolled = _timesRollable + 1;
 	_rollHistory.push_back(value);
 	return value;
 }
