@@ -3,16 +3,16 @@
 #include <stdexcept>
 
 
-Square::Square(int value)
+Square::Square(int _value)
 {
-	if (value > -1)
-		_value = value;
+	if (_value > 0)
+		value = _value;
 	else
 		throw std::invalid_argument("Value cannot be negative.");
 }
 
 const int Square::getValue() const {
-	return _value;
+	return value;
 }
 
 Square::~Square()
@@ -21,5 +21,5 @@ Square::~Square()
 
 Square Square::operator++()
 {
-	return Square(_value + 1);
+	return Square(value + 1);
 }

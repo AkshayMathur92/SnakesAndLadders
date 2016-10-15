@@ -1,9 +1,10 @@
 #pragma once
 #include <stdexcept>
-#include "Stair.h"
-
-class Ladder : protected Stair
+class Ladder
 {
+protected:
+	int begin;
+	int end;
 public:
 	Ladder(int, int);
 	~Ladder();

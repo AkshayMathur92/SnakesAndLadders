@@ -1,22 +1,22 @@
 #include "stdafx.h"
 #include "Ladder.h"
 
-Ladder::Ladder(int begin, int end)
+Ladder::Ladder(int _begin, int _end)
 {
-	if (begin > 0 && end > 0 && begin < end) {
-		_begin = begin;
-		_end = end;
+	if (_begin > 0 && _end > 0 && _begin < _end) {
+		begin = _begin;
+		end = _end;
 	}
 	else
-		throw std::invalid_argument("Value cannot be less than 1.");
+		throw std::invalid_argument("Values cannot be negative.");
+
 }
 
 const int Ladder::getBegin() const {
-	return _begin;
+	return begin;
 }
-
 const int Ladder::getEnd() const {
-	return _end;
+	return end;
 }
 
 Ladder::~Ladder()

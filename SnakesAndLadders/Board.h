@@ -4,19 +4,24 @@
 #include "Snake.h"
 #include <vector>
 
+#ifndef BOARD_DIMENSION
+#define BOARD_DIMESION 10
+#endif // !BOARD_DIMENSION
 
 class Board
 {
-	int _dimension;
-	std::vector<Square> _squares;
-	std::vector<Ladder> _ladders;
-	std::vector<Snake> _snakes;
+	std::vector<Square> squares;
+	std::vector<Ladder> ladders;
+	std::vector<Snake> snakes;
 	
 public:
-	Board(int, std::vector<Ladder>&, std::vector<Snake>&);
+	Board();
 	~Board();
 
+	void addLadder(int, int);
+	void addSnake(int, int);
+
 	const std::vector<Ladder> getLadders() const;
+
 	const std::vector<Snake> getSnakes() const;
-	const int getDimesion();
 };

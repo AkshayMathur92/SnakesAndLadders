@@ -1,9 +1,9 @@
 #pragma once
-#include <stdexcept>
-#include "Stair.h"
-
-class Snake : protected Stair
+#include "Ladder.h"
+class Snake
 {
+	int begin;
+	int end;
 public:
 	Snake(int, int);
 	~Snake();
