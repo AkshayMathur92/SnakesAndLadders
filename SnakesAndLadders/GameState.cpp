@@ -8,7 +8,7 @@ GameState::GameState(Board board, std::vector<Player> players):_board(board)
 {
 	_state = state::NOT_STARTED;
 	std::for_each(players.begin(), players.end(), [&](Player player) {
-		_playerPositions.insert(std::make_pair( player, Square(0) ));
+		_playerPositions.insert(std::make_pair( player.getId(), 0));
 	});
 }
 
@@ -24,22 +24,28 @@ int GameState::update(Player player, std::vector<int> moves) {
 		_state = state::IN_PROGRESS;
 
 	std::for_each(moves.begin(), moves.end(), [&](int move) {
-		auto pos = _playerPositions.find(player);
-		auto new_pos = pos->second.getValue() + move;
+		auto pos = *_playerPositions.find(player.getId());
+		auto new_pos = pos.second + move;
 
 		if (new_pos < _board.getDimesion() * _board.getDimesion()) {
 
 			std::find_if(_board.getLadders().begin(), _board.getLadders().end(), [&](Ladder ladder) {
-				if (ladder.getBegin() == new_pos)
+				if (ladder.getBegin() == new_pos) {
 					new_pos = ladder.getEnd();
+					return true;
+				}
+				return false;
 			});
 
 			std::find_if(_board.getSnakes().begin(), _board.getSnakes().end(), [&](Snake snake) {
-				if (snake.getBegin() == new_pos)
+				if (snake.getBegin() == new_pos) {
 					new_pos = snake.getEnd();
+					return true;
+				}
+				return false;
 			});
 
-			_playerPositions.insert_or_assign(player, Square(new_pos));
+			_playerPositions.insert_or_assign(player.getId(), new_pos);
 
 			if (new_pos == _board.getDimesion() * _board.getDimesion()) {
 				_winner = player;

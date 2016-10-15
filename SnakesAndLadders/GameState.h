@@ -11,7 +11,7 @@ class GameState
 	state _state;
 	Board _board;
 	boost::optional<Player> _winner;
-	std::map<Player, Square> _playerPositions;
+	std::map<int, int> _playerPositions;
 
 public:
 	GameState(Board, std::vector<Player>);
