@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include "Stair.h"
 
-class Ladder : protected Stair
+class Ladder : public Stair
 {
 public:
 	Ladder(int, int);

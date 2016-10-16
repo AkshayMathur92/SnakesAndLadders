@@ -8,6 +8,7 @@ Player::Player(int id)
 	_fStrategy = [](std::vector<int> moves) {
 		return moves;
 	};
+	_rollHistory.reserve(32);
 }
 
 Player::~Player()
@@ -19,7 +20,10 @@ void Player::rollDice(Dice dice)
 	_pDice = dice;
 	while (true) {
 		try {
-			_rollHistory.push_back(dice.roll());
+			auto value = dice.roll();
+			_rollHistory.push_back(value);
+			if (value != 6)
+				break;
 		}
 		catch (...) {
 			break;

@@ -29,5 +29,5 @@ void Game::run()
 		}
 	}
 	//OUTPUT WINNER 
-	std::cout << "Winner is Player " << _gameState.getWinner().getId();
+	//std::cout << "Winner is Player " << _gameState.getWinner().getId()<<std::endl;
 }

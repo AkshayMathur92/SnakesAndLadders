@@ -28,8 +28,9 @@ void SnakesAndLadder::initGame()
 
 	Player p1(1);
 	Player p2(2);
+	Player p3(3);
 
-	std::vector<Player> players = { p1,p2 };
+	std::vector<Player> players = { p1,p2,p3 };
 
 	Game game(board, diceFactory, players);
 	game.run();
