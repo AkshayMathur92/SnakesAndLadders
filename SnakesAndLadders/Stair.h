@@ -5,8 +5,13 @@ protected:
 	int _begin;
 	int _end;
 public:
-	virtual ~Stair() {};
-	virtual const int getBegin() const = 0;
-	virtual const int getEnd() const = 0;
+	Stair(int begin, int end) :_begin(begin), _end(end) {}
+	~Stair() {};
+	const int getBegin() const {
+		return _begin;
+	}
+	const int getEnd() const {
+		return _end;
+	}
 };
 

@@ -5,8 +5,7 @@
 class BoardBuilder
 {
 	int dimension;
-	std::vector<Ladder> _ladders;
-	std::vector<Snake> _snakes;
+	std::vector<Stair> _stairs;
 
 public:
 	BoardBuilder(int);

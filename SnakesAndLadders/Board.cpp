@@ -1,31 +1,26 @@
 #include "stdafx.h"
 #include "Board.h"
-#include <numeric>
-#include <iterator>
-
-Board::Board(int dimension, std::vector<Ladder> ladders, std::vector<Snake> snakes):_squares(dimension * dimension,Square(1))
+#include <algorithm>
+Board::Board(int dimension, std::vector<Stair> &stairs):_stairs(stairs)
 {
 	if (dimension > 0)
 		_dimension = dimension;
 	else
 		throw std::invalid_argument("Dimension cannot be less than 1");
-
-	std::copy(ladders.begin(), ladders.end(),back_inserter(_ladders));
-	std::copy(snakes.begin(), snakes.end(), back_inserter(_snakes));
-	std::iota(_squares.begin(), _squares.end(), Square(1));
-}
-
-const std::vector<Ladder> Board::getLadders() const {
-	return const_cast<std::vector<Ladder>&>(_ladders);
-}
-
-const std::vector<Snake> Board::getSnakes() const {
-	return const_cast<std::vector<Snake>&>(_snakes);
 }
 
 const int Board::getDimesion()
 {
 	return _dimension;
+}
+
+const int Board::getNextPosition(int pos) const {
+	auto new_pos_itr = std::find_if(_stairs.begin(), _stairs.end(), [pos](Stair stair) {
+		return stair.getBegin() == pos;
+	});
+	if (new_pos_itr != _stairs.end())
+		return new_pos_itr->getEnd();
+	return pos;
 }
 
 Board::~Board()

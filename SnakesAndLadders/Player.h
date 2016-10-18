@@ -3,7 +3,7 @@
 #include <vector>
 #include <memory>
 #include <boost\optional.hpp>
-typedef std::vector<int>(*strategy)(std::vector<int>);
+typedef std::vector<int>(*strategy)(std::vector<int>&);
 
 class Player
 {
@@ -16,7 +16,7 @@ public:
 	Player(int);
 	~Player();
 
-	void rollDice(Dice);
+	void rollDice(Dice&);
 	const int getId();
 	std::vector<int> getMoves();
 	Dice getDice();

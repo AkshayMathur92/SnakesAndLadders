@@ -10,7 +10,7 @@ class Game
 	GameState _gameState;
 
 public:
-	Game(Board, DiceFactory, std::vector<Player>);
+	Game(Board&, DiceFactory&, std::vector<Player>&);
 	~Game();
 	void run();
 };

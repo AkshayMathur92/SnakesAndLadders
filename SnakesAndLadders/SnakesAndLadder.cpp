@@ -4,6 +4,7 @@
 #include "BoardBuilder.h"
 #include "Player.h"
 #include "Game.h"
+#include "BufferedDice.h"
 
 
 SnakesAndLadder::SnakesAndLadder()
@@ -24,7 +25,8 @@ void SnakesAndLadder::initGame()
 	builder.addStair(45, 28);
 	auto board = builder.build();
 
-	DiceFactory diceFactory(3, 6);
+	DiceFactory dice(3, 6);
+	//BufferedDice dice(6);
 
 	Player p1(1);
 	Player p2(2);
@@ -32,6 +34,6 @@ void SnakesAndLadder::initGame()
 
 	std::vector<Player> players = { p1,p2,p3 };
 
-	Game game(board, diceFactory, players);
+	Game game(board, dice, players);
 	game.run();
 }

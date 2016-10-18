@@ -11,7 +11,7 @@ Dice::Dice(int timesRollable, int sided)
 	_sided = sided;
 	_id = rand();
 	_rolled = 1;
-	_rollHistory.reserve(timesRollable);
+	_rollHistory.reserve(8);
 }
 
 
@@ -37,7 +37,7 @@ const int Dice::getId()
 	return _id;
 }
 
-const std::vector<int> Dice::getHistory() const
+const std::vector<int>& Dice::getHistory() const
 {
 	return _rollHistory;
 }

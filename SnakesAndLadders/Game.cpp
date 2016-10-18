@@ -2,7 +2,7 @@
 #include "Game.h"
 #include <iostream>
 
-Game::Game(Board board , DiceFactory dice, std::vector<Player> players):_diceFactory(dice),_players(players),_gameState(board,players)
+Game::Game(Board &board , DiceFactory &dice, std::vector<Player> &players):_diceFactory(dice),_players(players),_gameState(board,players)
 {
 
 }

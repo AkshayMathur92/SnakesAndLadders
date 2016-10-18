@@ -5,17 +5,17 @@
 Player::Player(int id)
 {
 	_id = id;
-	_fStrategy = [](std::vector<int> moves) {
+	_fStrategy = [](std::vector<int> &moves) {
 		return moves;
 	};
-	_rollHistory.reserve(32);
+	_rollHistory.reserve(256);
 }
 
 Player::~Player()
 {
 }
 
-void Player::rollDice(Dice dice)
+void Player::rollDice(Dice &dice)
 {
 	_pDice = dice;
 	while (true) {
@@ -38,7 +38,8 @@ const int Player::getId()
 
 std::vector<int> Player::getMoves()
 {
-	return _fStrategy(_rollHistory);
+	//return _fStrategy(_rollHistory);
+	return _rollHistory;
 }
 
 Dice Player::getDice()

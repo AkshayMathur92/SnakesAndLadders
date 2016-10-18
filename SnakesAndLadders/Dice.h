@@ -13,6 +13,6 @@ public:
 	~Dice();
 	const int roll();
 	const int getId();
-	const std::vector<int> getHistory() const;
+	const std::vector<int>& getHistory() const;
 };
 
