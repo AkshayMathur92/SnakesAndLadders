@@ -6,7 +6,6 @@ protected:
 	int _end;
 public:
 	Stair(int begin, int end) :_begin(begin), _end(end) {}
-	~Stair() {};
 	const int getBegin() const {
 		return _begin;
 	}

@@ -5,26 +5,23 @@
 #include <utility>
 
 
-GameState::GameState(Board &board, std::vector<Player> &players) :_max_pos(board.getDimesion() * board.getDimesion()), _board(board)
+GameState::GameState(Board &board, const std::vector<Player> &players) :_max_pos(board.getDimesion() * board.getDimesion()), _board(board)
 {
 	_state = state::NOT_STARTED;
-	std::for_each(players.begin(), players.end(), [&](Player player) {
+	std::for_each(players.begin(), players.end(), [&](const Player &player) {
 		_playerPositions.insert(std::make_pair( player.getId(), 0));
 	});
 }
 
-GameState::~GameState()
-{
-}
-
-void GameState::update(Player &player, std::vector<int> &moves) {
+void GameState::update(const Player &player, std::tuple<int,int,int> &moves) {
 
 	if (_state == state::OVER)
 		return;
 	if (_state == state::NOT_STARTED)
 		_state = state::IN_PROGRESS;
 
-	std::for_each(moves.begin(), moves.end(), [&](int move) {
+	int moves_arr[] = { std::get<0>(moves),std::get<1>(moves) ,std::get<2>(moves) };
+	std::for_each(std::begin(moves_arr), std::end(moves_arr), [&](int move) {
 		auto new_pos = move + (*_playerPositions.find(player.getId())).second;
 
 		if (new_pos <= _max_pos) {
@@ -33,7 +30,7 @@ void GameState::update(Player &player, std::vector<int> &moves) {
 			_playerPositions.insert_or_assign(player.getId(), new_pos);
 
 			if (new_pos == _max_pos) {
-				_winner = player;
+				_winner =player;
 				_state = state::OVER;
 			}
 			//JUST FOR DEBUG PURPOSE
@@ -47,7 +44,7 @@ state GameState::getState()
 	return _state;
 }
 
-Player GameState::getWinner()
+const Player GameState::getWinner()
 {
 	if (_state == state::OVER) {
 		return _winner.get();

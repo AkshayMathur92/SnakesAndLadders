@@ -22,7 +22,3 @@ const int Board::getNextPosition(int pos) const {
 		return new_pos_itr->getEnd();
 	return pos;
 }
-
-Board::~Board()
-{
-}

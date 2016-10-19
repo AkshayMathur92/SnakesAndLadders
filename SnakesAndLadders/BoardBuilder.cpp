@@ -10,10 +10,6 @@ BoardBuilder::BoardBuilder(int dimesion)
 		throw std::invalid_argument("Dimesion must be greater than 1");
 }
 
-BoardBuilder::~BoardBuilder()
-{
-}
-
 const Board BoardBuilder::build()
 {
 	return Board(dimension,_stairs);

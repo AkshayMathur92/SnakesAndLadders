@@ -1,17 +1,16 @@
 #pragma once
 #include "GameState.h"
-#include "DiceFactory.h"
+#include "BufferedDice.h"
 #include <vector>
 
 class Game
 {
-	std::vector<Player> _players;
-	DiceFactory _diceFactory;
+	const std::vector<Player> _players;
+	BufferedDice& _dice;
 	GameState _gameState;
 
 public:
-	Game(Board&, DiceFactory&, std::vector<Player>&);
-	~Game();
+	Game( Board&, BufferedDice&, const std::vector<Player>&);
 	void run();
 };
 

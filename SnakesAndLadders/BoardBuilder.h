@@ -9,7 +9,6 @@ class BoardBuilder
 
 public:
 	BoardBuilder(int);
-	~BoardBuilder();
 
 	const Board build();
 	void addStair(int, int);

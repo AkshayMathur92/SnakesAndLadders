@@ -10,7 +10,6 @@ class Dice
 
 public:
 	Dice(int,int);
-	~Dice();
 	const int roll();
 	const int getId();
 	const std::vector<int>& getHistory() const;

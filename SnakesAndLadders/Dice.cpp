@@ -14,11 +14,6 @@ Dice::Dice(int timesRollable, int sided)
 	_rollHistory.reserve(8);
 }
 
-
-Dice::~Dice()
-{
-}
-
 const int Dice::roll()
 {
 	

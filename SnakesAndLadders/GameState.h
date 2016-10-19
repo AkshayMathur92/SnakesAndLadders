@@ -9,15 +9,14 @@ enum class state { NOT_STARTED, IN_PROGRESS, OVER };
 class GameState
 {
 	state _state;
-	Board _board;
+	const Board _board;
 	const int _max_pos;
-	boost::optional<Player> _winner;
+	boost::optional<const Player> _winner;
 	std::map<int, int> _playerPositions;
 
 public:
-	GameState(Board&, std::vector<Player>&);
-	~GameState();
-	void update(Player&, std::vector<int>&);
+	GameState(Board&, const std::vector<Player>&);
+	void update(const Player&, std::tuple<int,int,int>&);
 	state getState();
-	Player getWinner();
+	const Player getWinner();
 };

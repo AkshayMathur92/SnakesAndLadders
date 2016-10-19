@@ -6,16 +6,6 @@
 #include "Game.h"
 #include "BufferedDice.h"
 
-
-SnakesAndLadder::SnakesAndLadder()
-{
-}
-
-
-SnakesAndLadder::~SnakesAndLadder()
-{
-}
-
 void SnakesAndLadder::initGame()
 {
 	BoardBuilder builder(10);
@@ -25,8 +15,8 @@ void SnakesAndLadder::initGame()
 	builder.addStair(45, 28);
 	auto board = builder.build();
 
-	DiceFactory dice(3, 6);
-	//BufferedDice dice(6);
+	//DiceFactory dice(3, 6);
+	BufferedDice dice(6);
 
 	Player p1(1);
 	Player p2(2);

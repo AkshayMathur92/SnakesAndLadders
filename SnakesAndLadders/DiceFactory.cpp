@@ -6,11 +6,6 @@ DiceFactory::DiceFactory(int timesRollable,int sided):_sided(sided),_timesRollab
 {
 }
 
-
-DiceFactory::~DiceFactory()
-{
-}
-
 Dice DiceFactory::newDice()
 {
 	return Dice(_timesRollable, _sided);

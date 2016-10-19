@@ -6,7 +6,6 @@ class DiceFactory
 	int _timesRollable;
 public:
 	DiceFactory(int, int);
-	~DiceFactory();
 	Dice newDice();
 };
 
