@@ -22,8 +22,8 @@ void GameState::update(const Player &player, std::tuple<int,int,int> &moves) {
 
 	int moves_arr[] = { std::get<0>(moves),std::get<1>(moves) ,std::get<2>(moves) };
 	std::for_each(std::begin(moves_arr), std::end(moves_arr), [&](int move) {
-		auto new_pos = move + (*_playerPositions.find(player.getId())).second;
-
+		
+		auto new_pos = move + _playerPositions[player.getId()];
 		if (new_pos <= _max_pos) {
 
 			new_pos = _board.getNextPosition(new_pos);
@@ -50,5 +50,5 @@ const Player GameState::getWinner()
 		return _winner.get();
 	}
 	else
-		throw std::exception("Game if not over. cannot decide winner.");
+		throw std::exception("Game is not over. cannot decide winner.");
 }

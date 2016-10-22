@@ -13,8 +13,11 @@ BufferedDice::BufferedDice(int sided):_read_buff(boost::circular_buffer<int>(256
 		throw std::invalid_argument("Sides should be > 4");
 	
 	int upto = 256;
+	auto val = 1;
 	while (upto-- > 0) {
-		_read_buff.push(rand()%6 + 1);
+		val = rand() % 6 + 1;
+		_read_buff.push(val);
+		_write_buff.push(val);
 	}
 }
 

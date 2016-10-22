@@ -9,12 +9,12 @@ Board::Board(int dimension, std::vector<Stair> &stairs):_stairs(stairs)
 		throw std::invalid_argument("Dimension cannot be less than 1");
 }
 
-const int Board::getDimesion()
+int Board::getDimesion() const
 {
 	return _dimension;
 }
 
-const int Board::getNextPosition(int pos) const {
+int Board::getNextPosition(int pos) const {
 	auto new_pos_itr = std::find_if(_stairs.begin(), _stairs.end(), [pos](Stair stair) {
 		return stair.getBegin() == pos;
 	});

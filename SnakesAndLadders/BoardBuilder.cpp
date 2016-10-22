@@ -12,6 +12,9 @@ BoardBuilder::BoardBuilder(int dimesion)
 
 const Board BoardBuilder::build()
 {
+	std::sort(_stairs.begin(), _stairs.end(), [](Stair &a, Stair &b) {
+		return a.getBegin() > b.getBegin();
+	});
 	return Board(dimension,_stairs);
 }
 
